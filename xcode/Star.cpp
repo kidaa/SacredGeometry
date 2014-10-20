@@ -1,6 +1,6 @@
 //
 //  star.cpp
-//Sacred Geometry API by Rena Anakwe & Isioma Azu
+//  SacredCinderBot
 //
 //  Created by Isi on 10/17/14.
 //
@@ -42,7 +42,7 @@ void flOfLife::addPoints(){
     
 }
 
-void flOfLife::draw(){
+void flOfLife::drawRound(){
     
     //Translate to center of the window:
     gl::translate(mWindow.x/2, mWindow.y/2);
@@ -62,7 +62,73 @@ void flOfLife::draw(){
         
     }
     
+}
+
+void flOfLife::update(){
     
 }
+//void flOfLife::drawSqua(){
+//    gl::translate(mWindow.x/2, mWindow.y/2);
+//    float deltaTheta = (M_PI * 2.0) / mSideNumb;
+//
+//    for (int i = 0; i < mSideNumb; i++){
+//
+//        mPositions[i].x = mRad * cos(i * deltaTheta + mTheta);
+//        mPositions[i].y = mRad * sin(i * deltaTheta + mTheta);
+//
+//        gl::color( 1, 1, 0 );
+//        gl::rotate(1);
+//        gl::drawStrokedCircle(mPositions[i], 100);
+//
+//        gl::drawStrokedRect( Rect(mPositions[i]*2.0f, mPositions[i]*2.0f, 0.8);
+//
+//    }
+//}
+
+void flOfLife::drawTri(){
+    gl::translate(mWindow.x/2, mWindow.y/2);
+    float deltaTheta = (M_PI * 2.0) / mSideNumb;
+    
+    for (int i = 0; i < mSideNumb; i++){
+        
+        mPositions[i].x = mRad * cos(i * deltaTheta + mTheta);
+        mPositions[i].y = mRad * sin(i * deltaTheta + mTheta);
+        
+        vec2 tA = mWindow * vec2( 0,  -0.25 );
+        vec2 tB = mWindow * vec2( -0.25, 0.25 );
+        vec2 tC = mWindow * vec2( 0.25, 0.25 );
+        
+        gl::rotate(1);
+        
+        gl::color(1, 1, 0);
+        gl::drawSolidTriangle( tA, tB, tC );
+    }
+    
+    for (int i = 0; i < mSideNumb; i++){
+        
+        mPositions[i].x = mRad * cos(i * deltaTheta + mTheta);
+        mPositions[i].y = mRad * sin(i * deltaTheta + mTheta);
+        
+        vec2 tA = (mWindow * 0.80f) * vec2( 0,  -0.25 );
+        vec2 tB = (mWindow * 0.80f) * vec2( -0.25, 0.25 );
+        vec2 tC = (mWindow * 0.80f) * vec2( 0.25, 0.25 );
+        
+        gl::rotate(1);
+        
+        gl::color(0, 0, 0);
+        gl::drawSolidTriangle( tA, tB, tC );
+    }
+    //    for (int i = 0; i < mSideNumb; i++){
+    //    vec2 nA = mPositions[i] * vec2( 0.4,  0.15 );
+    //    vec2 nB = mPositions[i] * vec2( 0.15, 0.65 );
+    //    vec2 nC = mPositions[i] * vec2( 0.65, 0.65 );
+    //
+    //        gl::color(0, 0, 0);
+    //        gl:: drawSolidTriangle( nA, nB, nC);
+    //    }
+    
+    
+}
+
 
 
