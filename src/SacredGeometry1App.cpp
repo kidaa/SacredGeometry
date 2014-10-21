@@ -77,7 +77,7 @@ void SacredGeometry1App::setup()
     vec2 window = static_cast<vec2>( getWindowSize() );
     std::cout << window << std::endl;
     
-    mrou = flOfLife( (window/2.0f), 100, 10, window );
+    mrou = flOfLife( (window/2.0f), 100, 20, window );
     mtri = flOfLife( (window), 100, 10, window );
     
     mrou.addPoints();
@@ -110,10 +110,10 @@ void SacredGeometry1App::keydown( KeyEvent event )
     gl::clear( Color( 0, 0, 0 ) );
     
     
-    gl::pushMatrices();
-    mtri.drawTri();
+//    gl::pushMatrices();
+//    mtri.drawTri();
     //    gl::rotate(0.1);
-    gl::popMatrices();
+//    gl::popMatrices();
     
     gl::pushMatrices();
     mrou.drawRound();
